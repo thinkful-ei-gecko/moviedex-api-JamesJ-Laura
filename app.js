@@ -15,7 +15,7 @@ app.get('/', (req, res) => {
 
 app.get('/movie', (req, res) => {
   const genre = req.query.genre ? req.query.genre.toLowerCase() : '';
-  const country = req.query.country ? req.query.country.toLowerCase() : '';
+  const country = req.query.country ? decodeURI(req.query.country).toLowerCase() : '';
   const avg_vote = req.query.avg_vote ? parseFloat(req.query.avg_vote) : '';
 
   let filteredMovies = [...movieData];
